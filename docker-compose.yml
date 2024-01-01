@@ -1,0 +1,18 @@
+version: '3'
+services:
+  backend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "5000:5000"
+    volumes:
+      - ./backend:/backend
+    working_dir: /backend/app
+    command: ["venv/bin/python", "app.py"]
+
+#  frontend:
+#    build:
+#      context: .
+#      dockerfile: Dockerfile_frontend
+#    # Configure frontend service as needed

@@ -1,0 +1,2 @@
+# Place python library requirements here
+Flask==2.1.3
