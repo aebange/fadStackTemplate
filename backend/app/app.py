@@ -1,4 +1,4 @@
-import logging.config
+import logging
 from flask import Flask
 from controllers.main_controller import main_bp
 
@@ -16,9 +16,9 @@ def create_app():
 
 
 def configure_logging():
-
-    if not logging.getLogger().handlers:
-        logging.config.fileConfig('../app/config/logging_config.ini')
+    log = logging.getLogger('werkzeug')
+    # Change this if you want to see ALL requests
+    log.setLevel(logging.ERROR)
 
 
 if __name__ == '__main__':
