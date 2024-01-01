@@ -16,11 +16,12 @@ def create_app():
 
 
 def configure_logging():
-    log = logging.getLogger('werkzeug')
+    pass
+    #log = logging.getLogger('werkzeug')
     # Change this if you want to see ALL requests
-    log.setLevel(logging.ERROR)
+    #log.setLevel(logging.ERROR)
 
 
 if __name__ == '__main__':
     app = create_app()
-    app.run(debug=True, use_reloader=False)
+    app.run(debug=True, use_reloader=False, host='0.0.0.0')

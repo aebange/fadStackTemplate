@@ -1,21 +1,19 @@
 # Use an official Python runtime as a parent image
 FROM python:3.12.1
 
-# Set the working directory in the container
+# Create and set the working directory
 WORKDIR /app
 
-# Copy the virtual environment (venv) into the container
-COPY backend/venv /app/venv
-
-# Copy the rest of the application code
+# Copy only the necessary files
 COPY backend /app
 
-# Expose any necessary ports
+# Install dependencies
+RUN pip install -r app/requirements.txt
+
+# Expose the port your app runs on
 EXPOSE 5000
 
-# Define environment variables
-ENV FLASK_APP=app.py
-ENV FLASK_RUN_HOST=0.0.0.0
+ENV PYTHONPATH=/app:$PYTHONPATH
 
-# Run the application using the virtual environment
-CMD ["venv/bin/python", "app.py"]
+# Command to run your application
+CMD ["python", "backend/app/app.py"]
