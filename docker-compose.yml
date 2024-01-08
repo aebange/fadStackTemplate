@@ -1,15 +1,19 @@
 version: '3'
 services:
   backend:
-    build: .
-    volumes:
-      - .:/app
-      - ./backend:/app
+    build:
+      context: ./backend
+      dockerfile: Dockerfile_backend
+    container_name: fadStackTemplate_backend
     ports:
       - "5000:5000"
-
-#  frontend:
-#    build:
-#      context: .
-#      dockerfile: Dockerfile_frontend
-#    # Configure frontend service as needed
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile_frontend
+    container_name: fadStackTemplate_frontend
+    volumes:
+      - ./frontend/src:/app/src
+      - ./frontend/index.html:/app/index.html
+    ports:
+      - "4200:4200"

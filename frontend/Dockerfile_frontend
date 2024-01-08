@@ -1,0 +1,23 @@
+# Use an official Node runtime as a parent image
+FROM node:20.9.0
+
+# Create and set the working directory
+WORKDIR /frontend
+
+# Copy the entire frontend directory to the container
+COPY . .
+
+# Exclude node_modules
+RUN rm -rf node_modules
+
+# Install all the dependencies
+RUN npm install
+
+# Generate the build of the application
+RUN npm run build
+
+# Expose the port your app runs on
+EXPOSE 4200
+
+# Command to run your application
+CMD ["npm", "start"]
