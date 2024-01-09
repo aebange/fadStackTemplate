@@ -1,6 +1,7 @@
 import logging
 from flask import Flask
 from controllers.main_controller import main_bp
+from services.data_service import get_data
 
 
 def create_app():
