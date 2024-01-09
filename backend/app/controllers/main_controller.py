@@ -1,6 +1,6 @@
 # main_controller.py
 from flask import Blueprint, jsonify, current_app
-from backend.app.services.data_service import get_data
+from services.data_service import get_data
 
 main_bp = Blueprint('main', __name__)
 
